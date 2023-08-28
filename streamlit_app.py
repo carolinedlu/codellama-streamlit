@@ -77,7 +77,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
         with st.spinner("Thinking..."):
             response = generate_codellama_response(prompt)
             st.write(response.response)
-            message = {"role": "assistant", "content": response.response}
+            message = {"role": "assistant", "content": response}
             st.session_state.messages.append(message) # Add response to message history
 
 
