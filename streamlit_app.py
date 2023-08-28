@@ -28,7 +28,9 @@ def generate_codellama_response(prompt_input):
     #                        input={"prompt": f"{prompt_input}",
     #                               "temperature":0.1, "top_p":0.9, "max_length":512, "repetition_penalty":1})
       output = replicate.run('replicate/codellama-13b:1c914d844307b0588599b8393480a3ba917b660c7e9dfae681542b5325f228db', 
-                           input={"prompt": f"{prompt_input}"})
+                           input={"prompt": "Write a Python function to sum two integers"})
+
+                           # input={"prompt": f"{prompt_input}"})
                            # "temperature":0.75, "max_length":512, "repetition_penalty":1})
     
       return output
@@ -37,13 +39,13 @@ def generate_codellama_response(prompt_input):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-          response_codellama = generate_codellama_response(prompt)
+          codellama_response = generate_codellama_response(prompt)
           response = ""
           resp_container = st.empty()
-          for delta in response_codellama:
-            response += delta
+          for item in codellama_response:
+            response += item
             # resp_container.markdown(response)
-            resp_container.write(response)
+            resp_container.markdown(response)
           message = {"role": "assistant", "content": response}
           st.session_state.messages.append(message) # Add response to message history
 
