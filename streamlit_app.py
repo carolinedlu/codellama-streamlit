@@ -27,7 +27,7 @@ import streamlit as st
 import replicate
 import os
 
-os.environ['REPLICATE_API_TOKEN'] = replicate_api
+os.environ['REPLICATE_API_TOKEN'] = st.secrets["REPLICATE_API_TOKEN"]
 
 # st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaIndex", page_icon="🦙", layout="centered", initial_sidebar_state="auto", menu_items=None)
 # openai.api_key = st.secrets.openai_key
