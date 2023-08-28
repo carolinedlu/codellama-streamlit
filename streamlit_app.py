@@ -77,17 +77,25 @@ def generate_codellama_response(prompt_input):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = generate_codellama_response(prompt)
-            response_text = " "
-            for it in response:
-              # st.write(it)
-              response_text += it
-            st.write(response_text)
-            # st.write(response)
-            # st.write(response.gi_code)
-            # st.write(type(response))
-            message = {"role": "assistant", "content": response}
-            st.session_state.messages.append(message) # Add response to message history
+          response_codellama = generate_codellama_response(prompt)
+          response = ""
+          resp_container = st.empty()
+          for delta in response_codellama
+            response += delta
+            #delta.choices[0].delta.get("content", "")
+            resp_container.markdown(response)
+
+            # response = generate_codellama_response(prompt)
+            # response_text = " "
+            # for it in response:
+            #   # st.write(it)
+            #   response_text += it
+            # st.write(response_text)
+            # # st.write(response)
+            # # st.write(response.gi_code)
+            # # st.write(type(response))
+            # message = {"role": "assistant", "content": response}
+            # st.session_state.messages.append(message) # Add response to message history
 
 
 # # App title
