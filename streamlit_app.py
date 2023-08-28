@@ -42,7 +42,8 @@ if st.session_state.messages[-1]["role"] != "assistant":
           resp_container = st.empty()
           for delta in response_codellama:
             response += delta
-            resp_container.markdown(response)
+            # resp_container.markdown(response)
+            resp_container.write(response)
           message = {"role": "assistant", "content": response}
           st.session_state.messages.append(message) # Add response to message history
 
