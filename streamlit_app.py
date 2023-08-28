@@ -78,6 +78,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             response = generate_codellama_response(prompt)
+            response_text = " "
             for it in response:
               # st.write(it)
               response_text += it
