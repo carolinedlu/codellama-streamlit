@@ -71,7 +71,7 @@ def generate_codellama_response(prompt_input):
     #                               "temperature":0.1, "top_p":0.9, "max_length":512, "repetition_penalty":1})
       output = replicate.run('replicate/codellama-13b:1c914d844307b0588599b8393480a3ba917b660c7e9dfae681542b5325f228db', 
                            input={"prompt": f"{prompt_input}",})
-    return output
+      return output
 
 # If last message is not from assistant, generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
