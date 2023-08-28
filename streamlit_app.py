@@ -60,14 +60,14 @@ for message in st.session_state.messages: # Display the prior chat messages
         st.write(message["content"])
 
 def generate_codellama_response(prompt_input):
-    string_dialogue = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
-    for dict_message in st.session_state.messages:
-        if dict_message["role"] == "user":
-            string_dialogue += "User: " + dict_message["content"] + "\n\n"
-        else:
-            string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
+    # string_dialogue = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
+    # for dict_message in st.session_state.messages:
+    #     if dict_message["role"] == "user":
+    #         string_dialogue += "User: " + dict_message["content"] + "\n\n"
+    #     else:
+    #         string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
     output = replicate.run('replicate/codellama-13b:1c914d844307b0588599b8393480a3ba917b660c7e9dfae681542b5325f228db', 
-                           input={"prompt": f"{string_dialogue} {prompt_input} Assistant: ",
+                           input={"prompt": f"{prompt_input}",
                                   "temperature":0.1, "top_p":0.9, "max_length":512, "repetition_penalty":1})
     return output
 
