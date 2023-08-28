@@ -80,7 +80,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
           response_codellama = generate_codellama_response(prompt)
           response = ""
           resp_container = st.empty()
-          for delta in response_codellama
+          for delta in response_codellama:
             response += delta
             #delta.choices[0].delta.get("content", "")
             resp_container.markdown(response)
